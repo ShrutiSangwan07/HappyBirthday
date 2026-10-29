@@ -80,7 +80,7 @@ const SLIDES = [
   {text: "Go make memories today. Take pictures. Send me at least one. 📸", style:32, emoji:"📸"},
   {text: "You work hard. You deserve this day. Do nothing, guilt-free. 🦄", style:33, emoji:"🦄"},
   {text: "This year: more adventures, more laughs, and more time together. That's my real wish. 🎊", style:14, emoji:"🎊"},
-  {text: "Never forget how amazing you are, Lucky. I'll remind you. Loudly.", style:20, emoji:"👍"},
+  {text: "Never forget how amazing you are. I'll remind you. Loudly.", style:20, emoji:"👍"},
   {text: "Smile, sparkle, repeat. That's the whole plan.", style:9, emoji:"🥰"},
   {text: "You're my lucky star. Yes, uncle pun 😆. Yes, you love it.", style:2, emoji:"🌟"},
 ];
