@@ -3,65 +3,62 @@
   <head>
     <title>Happy Birthday</title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="src/css/index.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <link rel="stylesheet" href="index.css">
   </head>
   <body>
     <div id="all-slides-container">
       <!-- Dynamically inserted slides -->
     </div>
-    <!-- Cute hand-drawn SVG doodles on the layout! -->
-    <svg class="hand-doodle balloon-doodle" viewBox="0 0 56 123" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:4vw;bottom:94px;width:56px;z-index:11;pointer-events:none;">
+
+    <!-- Hand-drawn doodles (positioned in index.css) -->
+    <svg class="hand-doodle balloon-doodle" viewBox="0 0 56 123" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <ellipse cx="28" cy="35" rx="19" ry="31" fill="#fde1ef"/>
       <ellipse cx="28" cy="37" rx="10.5" ry="16" fill="#fda0ce"/>
       <ellipse cx="28" cy="35" rx="19" ry="31" stroke="#e298ca" stroke-width="2"/>
       <path d="M27 65Q28.5 90 12 120" stroke="#e298ca" stroke-width="2" stroke-linecap="round" />
       <circle cx="28" cy="68" r="4" fill="#e298ca"/>
     </svg>
-    <svg class="hand-doodle star-doodle" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:5vw;top:100px;width:48px;z-index:11;pointer-events:none;">
+    <svg class="hand-doodle star-doodle" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <polygon points="24,6 28,20 44,18 30,28 34,42 24,34 14,42 18,28 4,18 20,20"
                fill="#ffdff3" stroke="#be95bb" stroke-width="2"></polygon>
     </svg>
-    <svg class="hand-doodle flower-doodle" viewBox="0 0 57 29" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;left:45vw;top:19px;width:57px;z-index:10;opacity:0.68;pointer-events:none;">
+    <svg class="hand-doodle flower-doodle" viewBox="0 0 57 29" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <ellipse cx="13.2" cy="14.3" rx="12.6" ry="9.3" fill="#f9daf2" stroke="#ea83c6" stroke-width="1.7"/>
       <ellipse cx="33.1" cy="14.3" rx="12.6" ry="9.3" fill="#fbe9ff" stroke="#bd9ee9" stroke-width="1.7"/>
       <ellipse cx="23.2" cy="14.3" rx="5.5" ry="4.3" fill="#fff9fa" stroke="#ea83c6" stroke-width="1"/>
     </svg>
-    <svg class="hand-doodle sparkle-doodle" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;right:80px;bottom:18px;width:33px;z-index:10;opacity:0.67;pointer-events:none;">
+    <svg class="hand-doodle sparkle-doodle" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <polygon points="16.5,0 20,13 33,16.5 20,20 16.5,33 13,20 0,16.5 13,13"
                fill="#ffffff" opacity="0.7" stroke="#f1c7e6" stroke-width="1.2"/>
     </svg>
 
-    <!-- Ending Slide (canvas based, will show after all 33-40 slides are done) -->
-    <div class="ending-frame" id="ending-frame">
+    <!-- Ending card (canvas based, shown after the last slide) -->
+    <div class="ending-frame" id="ending-frame" role="button" tabindex="0" aria-label="Replay the slideshow">
       <canvas class="ending--canvas"></canvas>
       <div class="scroll-msg-container">
         <span class="scroll-msg">
-          Keep smiling, keep shining.<br>
-          Your presence makes the world a better and brighter place.<br>
-          Happy Birthday, and may your journey ahead be magical! ⭐
+          Thanks for being my favourite person to annoy.<br>
+          I love you more than cake. Almost. 😏<br>
+          Happy Birthday, Lucky! 💞
         </span>
       </div>
+      <div class="replay-hint">tap to replay 🔁</div>
     </div>
 
-    <!-- Background Music: loop & autoplay -->
-    <!--
-      MUSIC AUTOPLAY FIX: 
-      1. The browser may block autoplay with sound before user interaction.
-      2. We add an overlay button with a sweet message that appears on first load. 
-      3. As soon as user clicks/touches, play the audio and hide the overlay.
-    -->
-    <audio id="bg-audio" src="Jimin.mp3" preload="auto" loop style="display: none;"></audio>
-    <div id="music-overlay" style="position:fixed;z-index:9999;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(252,224,255,0.96);backdrop-filter:blur(2px);flex-direction:column;">
-      <button id="start-music-btn" style="padding:1.2em 2.2em;font-size:1.22em;font-family:'Caveat',cursive;font-weight:700;border-radius:16px;border:none;color:#e05ba9;background:linear-gradient(93deg, #f5bfff 40%, #fad0c4 100%);box-shadow:0 1.5px 18px #deabe6ba;cursor:pointer;margin-bottom:16px;transition:background 0.2s,transform 0.07s;">🎶 Begin the Birthday Magic!</button>
-      <div style="font-size:1.04em;color:#8f7be4;text-align:center;max-width:290px;">
-        Let the music fill your heart with joy and smiles! 💖
+    <!-- Background music: one audio element, loops, never touched by slide changes.
+         Browsers block sound before a tap, so the overlay below starts it. -->
+    <audio id="bg-audio" src="Jimin.mp3" preload="auto" loop></audio>
+
+    <button id="music-toggle" class="music-toggle" type="button" aria-label="Pause music" hidden>🎶</button>
+
+    <div id="music-overlay" class="music-overlay">
+      <button id="start-music-btn" class="start-music-btn" type="button">🎶 Start the Birthday Party!</button>
+      <div class="music-overlay-note">
+        Sound on, please. The party needs a soundtrack. 💖
       </div>
     </div>
 
-    <script src="index.js">
-     
-    </script>
+    <script src="index.js"></script>
   </body>
 </html>
