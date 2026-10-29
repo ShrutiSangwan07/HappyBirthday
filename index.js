@@ -44,9 +44,9 @@ window.addEventListener("DOMContentLoaded", function () {
 /* ---------- SLIDE DATA ---------- */
 // {text, [emoji], [img], style}
 const SLIDES = [
-  {text: "Happy Birthday, Lucky! Another year older and still my favourite person to annoy. 🎈", style:0, emoji:"🎈"},
+  {text: "Happy Birthday, Love! Another year older and still my favourite person to annoy. 🎈", style:0, emoji:"🎈"},
   {text: "Today's rules: no stress, no excuses, no being modest. You're the boss of the day.", style:1, emoji:"👑"},
-  {text: "Remember that college cafe? You forgot your keys and I quietly picked them up. 🔑", style:2, emoji:"☕"},
+  {text: "Remember that cafe? You forgot your keys and I quietly picked them up. 🔑", style:2, emoji:"☕"},
   {text: "While I said nothing. I gave them back eventually. You're welcome. 😇", style:13, emoji:"🕵️"},
   {text: "Warning: this slideshow contains an unsafe amount of me being sappy. Brace yourself.", style:3, emoji:"🚨"},
   {text: "Cake first, questions later. Calories don't count on birthdays. 🍰", style:4, emoji:"🍰", img:"https://media.giphy.com/media/3o7TKxOhhZmQfYSCti/giphy.gif"},
